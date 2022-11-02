@@ -14,13 +14,17 @@ console.log(request)
 const getDomains =()=>{
  axios.all(request).then(axios.spread((...responses)=>{
    const data = responses.map((target)=>{return ([
-    {status:target.status},
-    {dominio:target.config.url},
-    {tempo:target.config.timeout}
+    {
+        sucesso:[
+            {status:target.status},
+            {dominio:target.config.url},
+            {tempo:target.config.timeout}
+        ]
+    }
 ])})
     const sucess = JSON.stringify(data)
     fs.writeFileSync('../logs/logs.json',sucess)
-    console.log(data)
+    console.log(sucess)
     
  })).catch((err)=>{
     console.error(err.hostname,err.errno,err.code)
