@@ -1,22 +1,24 @@
 var express = require('express');
 var app = express();
+var cron = require('node-cron');
 
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
-    var mascots = [
-        { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
-        { name: 'Tux', organization: "Linux", birth_year: 1996},
-        { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
-    ];
-   
-    var tagline = "No programming concept is complete without a cute animal mascot.";
-    res.render('pages/index',{mascots: mascots, tagline: tagline});
+  res.render('pages/index',{mascots: mascots, tagline: tagline});
 });
 
-app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
+app.post('/',function(req,res){
+  // logic
+})
+
+cron.schedule('* * * * *',()=>{
+    console.log('task senddo executada a cada minuto')
+    res.status(200).json()
+
+})
+
+
 
 app.listen(3000);
 console.log('8080 is the magic port');
