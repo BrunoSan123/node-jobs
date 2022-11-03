@@ -1,12 +1,16 @@
 const domains =require('../domain/domains.json')
 const axios = require('axios');
-const timeout = axios.create().defaults.timeout=1000
+const timeout =1000*5
 const fs = require('fs')
 const sendMail = require('../mail_service/mailer')
 
 
 const request =domains.domains.map((target)=>{
-    return axios.get(target)
+    return axios({
+        method:"get",
+        url:target,
+        timeout:timeout
+    })
 })
 
 //console.log(request)
