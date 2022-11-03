@@ -9,7 +9,7 @@ const request =domains.domains.map((target)=>{
     return axios.get(target)
 })
 
-console.log(request)
+//console.log(request)
 
 const getDomains =()=>{
  axios.all(request).then(axios.spread((...responses)=>{
@@ -23,12 +23,11 @@ const getDomains =()=>{
     }
 ])})
     const sucess = JSON.stringify(data)
-    fs.writeFileSync('../logs/logs.json',sucess)
     console.log(sucess)
     
  })).catch((err)=>{
-    console.error(err.hostname,err.errno,err.code)
-    if(err ==timeout){
+    console.error(err.hostname,err.errno,err.code,err.config.timeout)
+    if(err.config.timeout ==timeout){
        const dataErr = err.map((target)=>{return([
         {erros:[
             {status:target.code},
@@ -48,4 +47,4 @@ const getDomains =()=>{
 getDomains()
 
 
-module.exports =getDomains
+module.exports ={getDomains,timeout}

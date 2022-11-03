@@ -2,6 +2,7 @@
     "domains":[
        "http://www.google.com",
        "http://www.wikipedia.com" ,
-       "https://centralfuneraria.co/blog/"
+       "https://centralfuneraria.co/blog/",
+       "http://www.google.com:81/"
     ]
 }
