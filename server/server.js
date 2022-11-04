@@ -3,29 +3,47 @@ var app = express();
 var cron = require('node-cron');
 const fs = require('fs')
 const bodyParser = require("body-parser");
+const domain = require('./domain/domains.json')
+const cors = require('cors')
 
+
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
-  //res.render('pages/index',{mascots: mascots, tagline: tagline});
   const file =fs.readFileSync('./domain/domains.json',{encoding:'utf8',flag:'r'});
   console.log(file)
   res.end(file);
 });
 
+app.get('/logs',function(req,res){
+  const logs =fs.readFileSync('./logs/logs.json',{encoding:'utf8',flag:'r'})
+  //console.log(logs[1])
+  res.end(logs);
+})
+
 app.post('/',function(req,res){
-  const domain = req.body
-  fs.appendFileSync('./domain/domains.json',JSON.stringify(domain));
-  console.log(domain)
+  const domain = req.body.domains
+  const data = fs.readFileSync('./domain/domains.json')
+  var object =JSON.parse(data)
+  object[0].domains.push(domain)
+  console.log(object[0])
+  fs.writeFileSync('./domain/domains.json',JSON.stringify(object));
   res.status(200).json(domain)
 })
 
-cron.schedule('* * * * *',()=>{
+if(domain[0].domains.length){
+  cron.schedule('* * * * *',()=>{
     console.log('task senddo executada a cada minuto')
-    res.status(200).json()
+    //const {getDomains} =require('./service/service')
+    //getDomains()
+    
 
 })
+}
+
+
 
 
 

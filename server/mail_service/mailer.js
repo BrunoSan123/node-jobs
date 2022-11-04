@@ -2,18 +2,18 @@ const mail = require('nodemailer')
 
 
 let transporter = mail.createTransport({
-  host: process.env.HOST,
-  port: process.env.PORT,
+  host: "smtp.mailtrap.io",
+  port: 2525,
   auth: {
-    user: process.env.USER,
-    pass: process.env.PASS
+    user: "3b2c1fa3d3e864",
+    pass: "5c2082934bcb91"
   }
 })
 
 
 const sendMailer=(erro)=>{
     transporter.sendMail({
-        from: '3cc329baab-1f6ae8@inbox.mailtrap.io',
+        from: 'bruno-kk@hotmail.com',
         to: '3cc329baab-1f6ae8@inbox.mailtrap.io',
         subject: 'Dominio em Lentidão',
         text: `Os seguintes dominção estão com muita lantência:\n

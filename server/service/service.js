@@ -2,7 +2,8 @@ const domains =require('../domain/domains.json')
 const axios = require('axios');
 const timeout =1000*5
 const fs = require('fs')
-const sendMailer = require('../mail_service/mailer')
+const sendMailer = require('../mail_service/mailer');
+const { ok } = require('assert');
 
 
 const request =domains[0].domains.map((target)=>{
@@ -17,31 +18,44 @@ const request =domains[0].domains.map((target)=>{
 
 const getDomains =()=>{
  axios.all(request).then(axios.spread((...responses)=>{
-   const data = responses.map((target)=>{return ([
+   const data = responses.map((target)=>{return (
     {
-        sucesso:[
-            {status:target.status},
-            {dominio:target.config.url},
-            {tempo:target.config.timeout}
-        ]
+        status:'OK',
+        sucesso:{
+            status:target.status,
+            dominio:target.config.url,
+            tempo:target.config.timeout
+        }
     }
-])})
-    const sucess = JSON.stringify(data)
-    console.log(sucess)
+)})
+    
+    console.log(data)
+    const buffer =fs.readFileSync('./logs/logs.json')
+    let blob = JSON.parse(buffer)
+    blob.relatorios.push(data)
+    fs.writeFileSync('./logs/logs.json',JSON.stringify(blob,null,2))
     
  })).catch((err)=>{
-    console.error(err.hostname,err.errno,err.code,err.config.timeout)
-    if(err.config.timeout ==timeout){
-       const dataErr = err
-        console.log(dataErr.message)
-        const erros =JSON.stringify(dataErr)
-        fs.writeFileSync('../logs/logs.json',erros)
-        sendMailer(err)
+    console.error(err.hostname,err.errno,err.code)
+    const buffer =fs.readFileSync('./logs/logs.json')
+    let blob = JSON.parse(buffer)
+    let commonErrors={
+        status:'BAD',
+        host:err.hostname,
+        code:err.code,
+        numero:err.errno,
+        timeout:err.config.timeout
     }
+    blob.relatorios.push(commonErrors)
+    fs.writeFileSync('./logs/logs.json',JSON.stringify(blob,null,2))
+    sendMailer(err)
+    
  })
 }
 
 getDomains()
+
+
 
 
 module.exports ={getDomains,timeout}
