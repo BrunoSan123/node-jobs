@@ -1,36 +1,34 @@
-{
-  "relatorios": [
-    {
-      "host": "www.456465465454654.com",
-      "code": "ENOTFOUND",
-      "numero": -3008,
-      "timeout": 5000
-    },
-    [
-      {
-        "status": "OK",
-        "sucesso": {
-          "status": 200,
-          "dominio": "http://google.com",
-          "tempo": 5000
-        }
-      },
-      {
-        "status": "OK",
-        "sucesso": {
-          "status": 200,
-          "dominio": "http://facebook.com",
-          "tempo": 5000
-        }
-      },
-      {
-        "status": "OK",
-        "sucesso": {
-          "status": 200,
-          "dominio": "http://www.school.com",
-          "tempo": 5000
-        }
-      }
-    ]
-  ]
-}
+[
+  {
+    "status": "OK",
+    "sucesso": {
+      "status": 200,
+      "dominio": "http://www.google.com",
+      "tempo": 5000
+    }
+  },
+  {
+    "status": "OK",
+    "sucesso": {
+      "status": 200,
+      "dominio": "http://www.youtube.com",
+      "tempo": 5000
+    }
+  },
+  {
+    "status": "OK",
+    "sucesso": {
+      "status": 200,
+      "dominio": "http://www.facebook.com",
+      "tempo": 5000
+    }
+  },
+  {
+    "status": "OK",
+    "sucesso": {
+      "status": 200,
+      "dominio": "http://www.school.com",
+      "tempo": 5000
+    }
+  }
+]

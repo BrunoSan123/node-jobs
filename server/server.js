@@ -19,12 +19,11 @@ app.get('/', function(req, res) {
 
 app.get('/logs',function(req,res){
   const logs =fs.readFileSync('./logs/logs.json',{encoding:'utf8',flag:'r'})
-  //console.log(logs[1])
   res.end(logs);
 })
 
 app.post('/',function(req,res){
-  const domain = req.body.domains
+  const domain = req.body
   const data = fs.readFileSync('./domain/domains.json')
   var object =JSON.parse(data)
   object[0].domains.push(domain)

@@ -1,1 +1,1 @@
-[{"domains":["http://google.com","http://facebook.com","http://www.school.com"]}]
+[{"domains":[{"hosts":"http://www.google.com"},{"hosts":"http://www.youtube.com"},{"hosts":"http://www.facebook.com"},{"hosts":"http://www.1213221321321.com"}]}]

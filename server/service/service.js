@@ -3,13 +3,13 @@ const axios = require('axios');
 const timeout =1000*5
 const fs = require('fs')
 const sendMailer = require('../mail_service/mailer');
-const { ok } = require('assert');
+
 
 
 const request =domains[0].domains.map((target)=>{
-    return axios({
+   return axios({
         method:"get",
-        url:target,
+        url:target.hosts,
         timeout:timeout
     })
 })
@@ -29,32 +29,31 @@ const getDomains =()=>{
     }
 )})
     
-    console.log(data)
-    const buffer =fs.readFileSync('./logs/logs.json')
-    let blob = JSON.parse(buffer)
-    blob.relatorios.push(data)
-    fs.writeFileSync('./logs/logs.json',JSON.stringify(blob,null,2))
+    //console.log(data)
+    fs.writeFileSync('../logs/logs.json',JSON.stringify(data,null,2))
+    
     
  })).catch((err)=>{
+    //console.log(err)
     console.error(err.hostname,err.errno,err.code)
-    const buffer =fs.readFileSync('./logs/logs.json')
+    const buffer =fs.readFileSync('../logs/logs.json')
     let blob = JSON.parse(buffer)
-    let commonErrors={
-        status:'BAD',
-        host:err.hostname,
-        code:err.code,
-        numero:err.errno,
-        timeout:err.config.timeout
-    }
-    blob.relatorios.push(commonErrors)
-    fs.writeFileSync('./logs/logs.json',JSON.stringify(blob,null,2))
+    domains.forEach((e)=>{
+        const host =e.domains.filter((e)=>(e.hosts==err.config.url)).map((f)=>(f.hosts))
+        if(host==err.config.url){
+           console.log('foi')
+        }else{
+            console.log('fail')
+        }
+    })
+    fs.writeFileSync('../logs/logs.json',JSON.stringify(blob,null,2))
     sendMailer(err)
     
  })
 }
 
-getDomains()
 
+getDomains()
 
 
 
