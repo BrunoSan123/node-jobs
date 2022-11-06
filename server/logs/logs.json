@@ -24,10 +24,10 @@
     }
   },
   {
-    "status": "OK",
+    "status": "BAD",
     "sucesso": {
       "status": 200,
-      "dominio": "http://www.school.com",
+      "dominio": "http://www.1213221321321.com",
       "tempo": 5000
     }
   }

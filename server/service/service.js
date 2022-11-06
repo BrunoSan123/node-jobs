@@ -40,14 +40,12 @@ const getDomains =()=>{
     let blob = JSON.parse(buffer)
     domains.forEach((e)=>{
         const host =e.domains.filter((e)=>(e.hosts==err.config.url)).map((f)=>(f.hosts))
-        if(host==err.config.url){
-           console.log('foi')
-        }else{
-            console.log('fail')
-        }
+        console.log(host)
     })
+
+    blob.filter((e)=>(e.sucesso.dominio==err.config.url)).map((f)=>(f.sucesso.dominio,f.status='BAD'))
     fs.writeFileSync('../logs/logs.json',JSON.stringify(blob,null,2))
-    sendMailer(err)
+    //sendMailer(err)
     
  })
 }
