@@ -1,0 +1,29 @@
+.logs{
+    display: none;
+}
+
+.see{
+    display: block;
+}
+
+.status{
+    cursor: pointer;
+}
+
+.sucess{
+    color: lightgreen;
+}
+
+.danger{
+    color: red;
+}
+
+.geralStatus{
+    display:none;
+    gap:30px;
+    margin-top:5%;
+}
+
+.seeFlex{
+    display: flex;
+}

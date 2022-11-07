@@ -1,0 +1,42 @@
+[
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.google.com",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.youtube.com",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.facebook.com",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.school.com",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.discord.com",
+      "tempo": null
+    }
+  }
+]
