@@ -12,6 +12,7 @@
         <input type="text" name="domain" id="dominio" placeholder="http://www.xxxx.com">
         <button id="submitButton" type="submit">Inserir</button>
         <button class="history">Historico</button>
+        <button class="submitLog">Logs</button>
     </div>
 
     <script src="./scripts/service.js"></script>

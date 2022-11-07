@@ -2,6 +2,8 @@ const formContainer = document.querySelector('.form')
 const historyBtn = document.querySelector('.history')
 const domainField = document.getElementById("dominio")
 const submit= document.getElementById("submitButton")
+const submitLog= document.querySelector(".submitLog")
+const statusDivPai=document.createElement('div')
 
 
 
@@ -42,8 +44,9 @@ async function insertHistory(){
     const history = await gotDomains('http://localhost:3000')
     const logs =await gotSucessLogs('http://localhost:3000/logs')
     const domainsContainer = document.createElement('div')
-    const statusDivPai=document.createElement('div')
     const statusDivs= document.createElement('div')
+    const logsDiv=document.createElement('div')
+    logsDiv.classList.add("logs")
     statusDivPai.classList.add("geralStatus")
     history[0].domains.forEach((e)=>{
         const innerElements = `<div class="domain-item">${e.hosts}</div>`
@@ -53,26 +56,24 @@ async function insertHistory(){
     })
 
     logs.forEach((e)=>{
-        const status =`<div class="status">${e.status}</div><div class="logs">${JSON.stringify(e)}</div>`
+        const status =`<div class="status">${e.status}</div>`
         statusDivs.innerHTML+=status
+        logsDiv.innerHTML+=`<div>${JSON.stringify(e)}</div>`
         statusDivPai.append(statusDivs)
+        statusDivPai.append(logsDiv)
     })
 
     formContainer.append(statusDivPai)
-    const status =[...document.querySelectorAll('.status')]
-    const description =[...document.querySelectorAll('.logs')]
-    status.forEach((e)=>{
-        e.addEventListener('click',()=>{
-           description.forEach((f)=>{
-            f.classList.toggle("see")
-            console.log(e)
-           })
-        })
+    const description = document.querySelector('.logs')
+    submitLog.addEventListener('click',()=>{
+        description.classList.toggle("see");
     })
-    
-    
-    
+
+   
+  
 }
+
+insertHistory()
 
 submit.addEventListener('click',()=>{
    const query= sendDomain('http://localhost:3000')
@@ -81,7 +82,13 @@ submit.addEventListener('click',()=>{
    }
 })
 
-historyBtn.addEventListener('click',insertHistory)
+
+
+historyBtn.addEventListener('click',()=>{
+    statusDivPai.classList.toggle("seeFlex")
+})
+
+
 
 
 

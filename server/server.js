@@ -33,10 +33,10 @@ app.post('/',function(req,res){
 })
 
 if(domain[0].domains.length){
-  cron.schedule('* * * * *',()=>{
-    console.log('task senddo executada a cada minuto')
-    //const {getDomains} =require('./service/service')
-    //getDomains()
+  cron.schedule('0 0 */1 * * *',()=>{
+    console.log('task senddo executada a cada uma hora')
+    const {getDomains} =require('./service/service')
+    getDomains()
     
 
 })
@@ -47,4 +47,4 @@ if(domain[0].domains.length){
 
 
 app.listen(3000);
-console.log('8080 is the magic port');
+console.log('servidor rodando na porta 3000');
