@@ -38,5 +38,29 @@
       "dominio": "http://www.discord.com",
       "tempo": null
     }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.twitter.com",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "https://nodejs.org/en/",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "https://www.uol.com.br",
+      "tempo": null
+    }
   }
 ]
