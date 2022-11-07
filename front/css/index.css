@@ -17,3 +17,10 @@
 .danger{
     color: red;
 }
+
+.geralStatus{
+    display:flex;
+    gap:30px;
+    margin-top:5%;
+    
+}

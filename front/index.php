@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="form">
-        <input type="text" name="domain" id="dominio">
-        <button type="submit">Inserir</button>
+        <input type="text" name="domain" id="dominio" placeholder="http://www.xxxx.com">
+        <button id="submitButton" type="submit">Inserir</button>
         <button class="history">Historico</button>
     </div>
 
