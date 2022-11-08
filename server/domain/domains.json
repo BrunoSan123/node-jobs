@@ -36,7 +36,8 @@
       },
       {
         "hosts": "https://discord.me/programadoresbr"
-      }
+      },
+      null
     ]
   }
 ]
