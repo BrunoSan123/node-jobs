@@ -5,6 +5,7 @@ const fs = require('fs')
 const bodyParser = require("body-parser");
 const domain = require('./domain/domains.json')
 const cors = require('cors')
+const {getDomains} =require('./service/service')
 
 
 app.use(cors())
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
   const file =fs.readFileSync('./domain/domains.json',{encoding:'utf8',flag:'r'});
-  console.log(file)
+  //console.log(file)
   res.end(file);
 });
 
@@ -27,19 +28,16 @@ app.post('/',function(req,res){
   const data = fs.readFileSync('./domain/domains.json')
   var object =JSON.parse(data)
   object[0].domains.push(domain)
-  console.log(object[0])
-  fs.writeFileSync('./domain/domains.json',JSON.stringify(object));
+  //console.log(object[0])
+  fs.writeFileSync('./domain/domains.json',JSON.stringify(object,null,2));
   res.status(200).json(domain)
 })
 
 if(domain[0].domains.length){
   cron.schedule('0 0 */1 * * *',()=>{
     console.log('task senddo executada a cada uma hora')
-    const {getDomains} =require('./service/service')
     getDomains()
-    
-
-})
+  })
 }
 
 

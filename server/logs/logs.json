@@ -62,5 +62,37 @@
       "dominio": "https://www.uol.com.br",
       "tempo": null
     }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.terra.com.br",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.estadao.com.br",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://www.folha.uol.com.br",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "https://discord.me/programadoresbr",
+      "tempo": null
+    }
   }
 ]
