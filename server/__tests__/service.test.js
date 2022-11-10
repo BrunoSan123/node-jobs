@@ -54,15 +54,8 @@ describe('Requisição teste',()=>{
           request(app)
           .post('/')
           .send({hosts:'https://www.rust-lang.org/pt-BR'})
-          .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(200)
-          .end(function(err, res) {
-            if (err) throw err
-            console.log(res.body)
-            
-        })
-
-        })
+         })
     })
 })

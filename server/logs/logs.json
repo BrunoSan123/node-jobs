@@ -94,5 +94,13 @@
       "dominio": "https://discord.me/programadoresbr",
       "tempo": null
     }
+  },
+  {
+    "status": "BAD",
+    "response": {
+      "tempo": 5000,
+      "errorCode": "ENOTFOUND",
+      "dominio": "http://www.ashjkahsjkahskja.com"
+    }
   }
 ]
