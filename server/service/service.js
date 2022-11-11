@@ -49,12 +49,24 @@ const getDomains = () => {
       console.error(err.hostname, err.errno, err.code);
       const buffer = fs.readFileSync("./logs/logs.json");
       let blob = JSON.parse(buffer);
-      domains.forEach((e) => {
-        const host = e.domains
-          .filter((e) => e.hosts == err.config.url)
-          .map((f) => f.hosts);
-        console.log(host);
-      });
+      console.log(err.config.url)
+      const status = blob.filter((e)=>(e.response.dominio==err.config.url)).map((f)=>(f.response.dominio))
+      console.log(status)
+     
+      if(!status.length){
+        let errorObject ={
+          status:'BAD',
+          response:{
+            tempo: err.request._currentRequest.socket.timeout,
+            errorCode:err.code,
+            dominio:err.config.url
+          }
+        }
+        blob.push(errorObject)
+        console.log(blob)
+        fs.writeFileSync("./logs/logs.json", JSON.stringify(blob, null, 2));
+
+      }else{
       blob
         .filter((e) => e.response.dominio == err.config.url)
         .map(
@@ -66,6 +78,7 @@ const getDomains = () => {
           )
         );
       fs.writeFileSync("./logs/logs.json", JSON.stringify(blob, null, 2));
+    }
       sendMailer(err);
     });
 };
