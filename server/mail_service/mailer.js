@@ -4,6 +4,7 @@ const mail = require('nodemailer')
 let transporter = mail.createTransport({
   host: "smtp.mailtrap.io",
   port: 2525,
+  //service: 'gmail',
   auth: {
     user: "3b2c1fa3d3e864",
     pass: "5c2082934bcb91"

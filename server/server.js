@@ -34,7 +34,7 @@ app.post('/',function(req,res){
 })
 
 if(domain[0].domains.length){
-  cron.schedule('0 */1 * * * *',()=>{
+  cron.schedule('0 0 */1 * * *',()=>{
     console.log('task senddo executada a cada uma hora')
     getDomains()
     console.log('passou aqui')

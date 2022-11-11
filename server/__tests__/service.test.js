@@ -8,7 +8,7 @@ const app = express();
 
 describe('Requisição teste',()=>{
     describe('suite de testes para multiplas requisições',()=>{
-        it('deve fazer uma requisição para o enpoint  principal trazendo ohistórico e estatus',()=>{
+        it('deve fazer uma requisição para o enpoint  principal trazendo o histórico e estatus',()=>{
             
 
             app.get('/', function(req, res) {
