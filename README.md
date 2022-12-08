@@ -8,10 +8,10 @@ entre na pasta 'server' e rode o comando npm install, depois de instalado execut
 Na pasta front siga o mesmo procedimento
 
 ao ser emitido um erro, é gerado um arquivo de log `logs.json` que fica na pasta `logs`
-Esse arquivo é enviado pela API ao front que é consumido pelo minu Dashboard.
+Esse arquivo é enviado pela API ao front que é consumido pelo mini Dashboard.
 
-o cliente smtp usado é o `nodemailer`, atualmente o cliente está com crendendias de testes que usei no desenvolvimento. usei o `mailtrap` para testes, mas será preciso que o usuario pegue as credenciais smtp  do serviço de email que o mesmo usa.
+o cliente smtp usado é o `nodemailer`, atualmente o cliente está com crendênciais de testes que usei no desenvolvimento. usei o `mailtrap` para testes, mas será preciso que o usuário pegue as credênciais smtp  do serviço de email que o mesmo usa.
 
 Aqui um exemplo de como usar [Gmail](https://bradhick.medium.com/nodejs-enviando-emails-com-gmail-e-nodemailer-9606f0be4819) com nodemailer
 
-Caso queira customisar o tempo que a thread do `nodecron` executa, ficara aqui um [link](https://www.npmjs.com/package/node-cron) com um pequeno tutorial da lib `nodecron` 
+Caso queira customizar o tempo que a thread do `nodecron` executa, ficara aqui um [link](https://www.npmjs.com/package/node-cron) com um pequeno tutorial da lib `nodecron` 
