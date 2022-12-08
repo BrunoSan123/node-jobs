@@ -96,11 +96,19 @@
     }
   },
   {
-    "status": "BAD",
+    "status": "OK",
     "response": {
-      "tempo": 5000,
-      "errorCode": "ENOTFOUND",
-      "dominio": "http://digitalcredcard.com.br"
+      "status": 200,
+      "dominio": "https://www.esent.com.br",
+      "tempo": null
+    }
+  },
+  {
+    "status": "OK",
+    "response": {
+      "status": 200,
+      "dominio": "http://SouGay.com",
+      "tempo": null
     }
   }
 ]

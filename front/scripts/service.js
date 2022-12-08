@@ -4,6 +4,7 @@ const domainField = document.getElementById("dominio")
 const submit= document.getElementById("submitButton")
 const submitLog= document.querySelector(".submitLog")
 const statusDivPai=document.createElement('div')
+const domain = document.getElementById("dominio") 
 
 
 
@@ -13,6 +14,7 @@ async function gotDomains(endpoint){
     return response
 
 }
+
 
 async function gotSucessLogs(endpoint){
     const logs =await fetch(endpoint)
@@ -34,7 +36,7 @@ async function sendDomain(endpoint){
         }
     )
 
-    const content =await rawResponse.json()
+    const content =await rawResponse.statusText
     return content
 }
 
@@ -75,11 +77,27 @@ async function insertHistory(){
 
 insertHistory()
 
+
+
 submit.addEventListener('click',()=>{
-   const query= sendDomain('http://localhost:3000')
+
+if(domain.value==""){
+    alert("O campo precisa estar preenchido")
+}else{
+try {
+    const query= sendDomain('http://localhost:3000')
    if(query){
-    alert('Dominio anexado com sucesso')
-   }
+        alert("Dominio anexado com sucesso")
+        console.log(query)
+    }else{
+        alert('query rejeitada')
+    }
+    
+} catch (error) {
+    alert("servidor off ou problema na resposta")
+}
+   
+}
 })
 
 
